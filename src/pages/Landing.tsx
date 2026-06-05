@@ -186,7 +186,10 @@ export default function Landing() {
               <div className="flex flex-col gap-4">
                 <InputBox label="Full Name" name="full_name" type="text" value={formData.full_name} onChange={handleChange} required />
                 <InputBox label="Email Address" name="email" type="email" value={formData.email} onChange={handleChange} required />
-                <InputBox label="Phone Number" name="phone_number" type="tel" value={formData.phone_number} onChange={handleChange} required />
+                <div>
+                  <InputBox label="Phone Number" name="phone_number" type="tel" value={formData.phone_number} onChange={handleChange} required />
+                  <p className="text-xs text-slate-500 font-medium px-2 pt-1.5">WhatsApp Business preferred.</p>
+                </div>
                 <InputBox label="Social Handle (Optional)" name="social_handle" type="text" value={formData.social_handle} onChange={handleChange} />
               </div>
 
