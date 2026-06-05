@@ -58,13 +58,13 @@ export default function Initiation() {
           <KeyRound className="w-8 h-8" />
         </div>
 
-        <div className="flex flex-col gap-8 w-full group relative">
+        <div className="flex flex-col gap-8 max-w-md w-full mx-auto group relative">
            <input 
              type="text"
              value={token}
              onChange={(e) => setToken(e.target.value.toUpperCase())}
              maxLength={10}
-             className="w-full bg-transparent border-b-2 border-slate-200 focus:border-blue-600 text-center text-5xl md:text-6xl font-bold tracking-[0.25em] text-slate-800 pb-4 focus:outline-none transition-colors placeholder:text-slate-200 placeholder:tracking-normal placeholder:font-medium"
+             className="w-full bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-2xl border border-slate-100 focus:border-blue-100 text-center px-6 py-4 text-lg md:text-xl md:p-6 font-bold tracking-[0.25em] text-slate-800 focus:outline-none focus:ring-4 focus:ring-blue-50 transition-all placeholder:text-slate-300 placeholder:tracking-normal placeholder:font-medium"
              placeholder="ENTER CODE"
            />
         </div>
