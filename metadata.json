@@ -1,0 +1,6 @@
+{
+  "name": "June Studio Bootcamp 1.0",
+  "description": "The 3-Day Reality Break. A premium access-gated bootcamp platform featuring a countdown genesis page, secure Supabase receipts upload, external webhook notifications, and a time-locked content vault.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

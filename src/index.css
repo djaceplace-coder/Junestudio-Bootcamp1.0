@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    background-color: #ffffff;
+    color: #111827;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-light {
+    background: linear-gradient(135deg, #f0fdfa 0%, #fefce8 50%, #eff6ff 100%);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+  }
+  
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.05), -10px -10px 30px rgba(255, 255, 255, 0.8);
+  }
+
+  .neo-input {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.02), inset -4px -4px 8px rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+  }
+
+  .neo-input:focus {
+    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.05), inset -4px -4px 8px rgba(255, 255, 255, 1), 0 0 0 2px rgba(0, 85, 255, 0.2);
+    border-color: #0055ff;
+  }
+
+  .neo-button {
+    background: linear-gradient(135deg, #0055ff, #0044cc);
+    box-shadow: 0 10px 20px -5px rgba(0, 85, 255, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .neo-button:hover {
+    box-shadow: 0 15px 25px -5px rgba(0, 85, 255, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .neo-shadow {
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.04), -8px -8px 16px rgba(255, 255, 255, 0.8);
+  }
+}
+
+@keyframes gradientBG {
+  0% { transform: scale(1); background-position: 0% 50%; }
+  50% { transform: scale(1.05); background-position: 100% 50%; }
+  100% { transform: scale(1); background-position: 0% 50%; }
+}
