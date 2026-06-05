@@ -23,6 +23,11 @@ app.post("/api/register", async (req, res) => {
     .single();
 
   if (error) {
+    if (error.code === '23505' || error.message.includes('unique')) {
+       return res.status(400).json({ 
+         error: "This email is already registered. If you haven't uploaded your payment proof yet, please do so via WhatsApp or contact support." 
+       });
+    }
     return res.status(400).json({ error: error.message });
   }
 

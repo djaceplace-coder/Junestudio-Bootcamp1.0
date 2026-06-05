@@ -42,6 +42,11 @@ CREATE POLICY "Allow select with access_token" ON bootcamp_initiates
 FOR SELECT
 USING (true);
 
+-- Allow public updates to attach the receipt
+CREATE POLICY "Allow public update" ON bootcamp_initiates
+FOR UPDATE
+USING (true);
+
 -- Allow public uploads to payment_proofs
 CREATE POLICY "Allow public uploads to payment_proofs" ON storage.objects
 FOR INSERT
