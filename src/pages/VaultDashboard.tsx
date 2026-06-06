@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import { Lock, ArrowRight } from "lucide-react";
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
@@ -36,6 +36,7 @@ function CountdownComponent({ targetTime }: { targetTime: number }) {
 }
 
 export default function VaultDashboard() {
+  const { user } = useOutletContext<{ user: any }>();
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -62,21 +63,21 @@ export default function VaultDashboard() {
       id: 1,
       title: "Proceed to Day 1",
       path: "/vault/day-1",
-      unlocked: now >= day1Unlock,
+      unlocked: user?.is_admin || now >= day1Unlock,
       target: day1Unlock
     },
     {
       id: 2,
       title: "Proceed to Day 2",
       path: "/vault/day-2",
-      unlocked: now >= day2Unlock,
+      unlocked: user?.is_admin || now >= day2Unlock,
       target: day2Unlock
     },
     {
       id: 3,
       title: "Proceed to Day 3",
       path: "/vault/day-3",
-      unlocked: now >= day3Unlock,
+      unlocked: user?.is_admin || now >= day3Unlock,
       target: day3Unlock
     }
   ];

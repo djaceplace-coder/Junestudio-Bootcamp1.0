@@ -1,19 +1,20 @@
 import { useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useOutletContext } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { motion } from "motion/react";
 
 export default function VaultDay2() {
   const navigate = useNavigate();
+  const { user } = useOutletContext<{ user: any }>();
 
   useEffect(() => {
     // June 11, 2026 00:00:00 WAT
     const unlockTime = new Date("2026-06-11T00:00:00+01:00").getTime();
-    if (new Date().getTime() < unlockTime) {
+    if (!user?.is_admin && new Date().getTime() < unlockTime) {
       alert("Patience. Day 2 is compiling.");
       navigate("/vault", { replace: true });
     }
-  }, [navigate]);
+  }, [navigate, user]);
 
   return (
     <motion.div 

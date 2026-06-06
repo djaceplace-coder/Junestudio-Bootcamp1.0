@@ -7,12 +7,16 @@ export default function VaultLayout() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const [userProfile, setUserProfile] = useState<any>(null);
+
   useEffect(() => {
     const checkSession = async () => {
       try {
         const res = await fetch("/api/vault/session");
-        if (res.ok) {
+        const data = await res.json();
+        if (res.ok && data.valid) {
           setAuthorized(true);
+          setUserProfile(data.user);
         } else {
           navigate("/initiation");
         }
@@ -23,7 +27,7 @@ export default function VaultLayout() {
     checkSession();
   }, [location.pathname, navigate]);
 
-  if (!authorized) {
+  if (!authorized || !userProfile) {
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center text-slate-900">
         <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
@@ -54,7 +58,7 @@ export default function VaultLayout() {
         </button>
       </header>
       <main className="p-6 lg:p-12 max-w-7xl mx-auto w-full relative z-10 flex flex-col items-center">
-        <Outlet />
+        <Outlet context={{ user: userProfile }} />
       </main>
     </div>
   );

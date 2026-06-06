@@ -195,20 +195,28 @@ export default function Landing() {
 
               {error && <div className="text-red-500 text-sm font-medium bg-red-50 p-3 rounded-xl">{error}</div>}
 
-              <button 
-                type="submit" 
-                disabled={loading}
-                className="mt-4 w-full neo-button text-white font-bold text-base py-4 rounded-xl flex items-center justify-center gap-2 group"
-              >
-                {loading ? (
-                  <Loader2 className="w-5 h-5 animate-spin" />
-                ) : (
-                  <>
-                    <span>Reserve Spot (₦5,000)</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </>
-                )}
-              </button>
+              <div className="flex flex-col gap-4 mt-4">
+                <button 
+                  type="submit" 
+                  disabled={loading}
+                  className="w-full neo-button text-white font-bold text-base py-4 rounded-xl flex items-center justify-center gap-2 group"
+                >
+                  {loading ? (
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                  ) : (
+                    <>
+                      <span>Reserve Spot (₦5,000)</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </>
+                  )}
+                </button>
+                <div className="flex flex-col items-center gap-1 text-center">
+                  <span className="text-sm font-medium text-slate-500">Already registered but payment failed/pending?</span>
+                  <a href="https://wa.me/2348000000000?text=Hello%20June%20Studio!%20I%20registered%20but%20need%20to%20send%20my%20payment%20receipt." target="_blank" rel="noreferrer" className="text-sm font-bold text-blue-600 hover:text-blue-700 hover:underline">
+                    Contact Support / Upload Receipt via WhatsApp
+                  </a>
+                </div>
+              </div>
             </form>
           )}
         </motion.div>

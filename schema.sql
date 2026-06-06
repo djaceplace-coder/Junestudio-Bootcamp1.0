@@ -47,6 +47,9 @@ CREATE POLICY "Allow public update" ON bootcamp_initiates
 FOR UPDATE
 USING (true);
 
+-- Add the is_admin flag for your personal vault override
+ALTER TABLE bootcamp_initiates ADD COLUMN IF NOT EXISTS is_admin BOOLEAN DEFAULT FALSE;
+
 -- Allow public uploads to payment_proofs
 CREATE POLICY "Allow public uploads to payment_proofs" ON storage.objects
 FOR INSERT
