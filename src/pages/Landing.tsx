@@ -17,7 +17,7 @@ export default function Landing() {
     social_handle: "",
   });
 
-  const targetDate = new Date("2026-06-09T23:59:00+01:00").getTime();
+  const targetDate = new Date("2026-06-10T18:00:00+01:00").getTime();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -180,7 +180,7 @@ export default function Landing() {
             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
               <div className="mb-2">
                 <h2 className="text-2xl font-bold tracking-tight text-slate-900">Secure Your Spot</h2>
-                <p className="text-slate-500 text-sm mt-1">Provide your details to initiate access.</p>
+                <p className="text-slate-500 text-sm mt-1">Registration is still on, closes by 6pm.</p>
               </div>
 
               <div className="flex flex-col gap-4">
