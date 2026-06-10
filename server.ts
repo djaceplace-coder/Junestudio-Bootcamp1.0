@@ -87,7 +87,7 @@ app.post("/api/initiation/login", async (req, res) => {
     return res.status(401).json({ error: "Token invalid or not found." });
   }
 
-  if (!data.payment_status) {
+  if (!data.payment_status && !data.is_admin) {
     return res.status(403).json({ error: "Token valid but payment awaiting verification." });
   }
 
@@ -114,7 +114,7 @@ app.get("/api/vault/session", async (req, res) => {
     .eq("access_token", token)
     .single();
 
-  if (error || !data || !data.payment_status) {
+  if (error || !data || (!data.payment_status && !data.is_admin)) {
     return res.status(401).json({ error: "Invalid session" });
   }
 

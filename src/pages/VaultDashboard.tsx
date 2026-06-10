@@ -54,9 +54,9 @@ export default function VaultDashboard() {
     return () => clearInterval(ticker);
   }, []);
 
-  const day1Unlock = new Date("2026-06-10T00:00:00+01:00").getTime();
-  const day2Unlock = new Date("2026-06-11T00:00:00+01:00").getTime();
-  const day3Unlock = new Date("2026-06-12T00:00:00+01:00").getTime();
+  const day1Unlock = new Date("2026-06-10T20:00:00+01:00").getTime();
+  const day2Unlock = new Date("2026-06-11T20:00:00+01:00").getTime();
+  const day3Unlock = new Date("2026-06-12T20:00:00+01:00").getTime();
 
   const days = [
     {

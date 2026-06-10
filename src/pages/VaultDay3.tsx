@@ -9,7 +9,7 @@ export default function VaultDay3() {
   const { user } = useOutletContext<{ user: any }>();
 
   useEffect(() => {
-    const unlockTime = new Date("2026-06-12T00:00:00+01:00").getTime();
+    const unlockTime = new Date("2026-06-12T20:00:00+01:00").getTime();
     if (!user?.is_admin && new Date().getTime() < unlockTime) {
       alert("Patience. Day 3 is compiling.");
       navigate("/vault", { replace: true });
