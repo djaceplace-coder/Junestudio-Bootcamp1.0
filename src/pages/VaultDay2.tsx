@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate, Link, useOutletContext } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { motion } from "motion/react";
-import { EntropySlider, ConsequenceMatrix, StackBuilder } from "../components/VaultComponents";
+import { EducationalGridModule, LoopDiagram, ApiDiagram, SmeAutomationDiagram, SystemFactoryDiagram } from "../components/VaultComponents";
 
 export default function VaultDay2() {
   const navigate = useNavigate();
@@ -16,87 +16,67 @@ export default function VaultDay2() {
     }
   }, [navigate, user]);
 
-  const firstName = user?.full_name ? user.full_name.split(' ')[0].toUpperCase() : "INITIATE";
-
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="flex flex-col gap-16 max-w-[90vw] md:max-w-4xl mx-auto w-full px-4 md:px-0 py-8 md:py-12 overflow-x-hidden"
+      className="flex flex-col max-w-[90vw] md:max-w-6xl mx-auto w-full px-4 md:px-0 py-8 md:py-12 overflow-x-hidden min-h-screen"
     >
-      <Link to="/vault" className="text-sm font-bold text-slate-400 flex items-center gap-2 w-fit hover:text-[#0055FF] transition-colors">
-        <ArrowLeft className="w-5 h-5" /> Back to Base
-      </Link>
-      
-      <div className="space-y-4 text-center md:text-left">
-        <p className="text-sm font-bold tracking-widest text-[#0055FF] uppercase">Module 02</p>
-        <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
-          HELLO {firstName}, YOUR ARCHITECTURE AWAITS.
+      <div className="mb-12">
+        <Link to="/vault" className="text-sm font-bold text-slate-400 flex items-center gap-2 w-fit hover:text-[#0055FF] transition-colors mb-8">
+          <ArrowLeft className="w-5 h-5" /> Back to Base
+        </Link>
+        <p className="text-xs font-bold tracking-[0.2em] text-slate-400 uppercase mb-4">Master Progression Syllabus • Day 2</p>
+        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
+          WORK BETTER WITH AI
         </h1>
+        <p className="text-xl text-slate-500 font-medium mt-4 max-w-2xl leading-relaxed">
+          The Structural Foundation. <br/>"I can automate repetitive work and build cybernetic, self-regulating systems."
+        </p>
       </div>
 
-      {/* CORE CONTENT: SYSTEMIC ENTROPY */}
-      <section className="space-y-8">
-        <div className="border-l-4 border-[#0055FF] pl-6 md:pl-8 py-2">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 uppercase tracking-tight">
-            Balance & Action: Cybernetic Regulation
-          </h2>
-          <p className="text-slate-500 font-medium mt-2">Magnetic UI Snapping</p>
-        </div>
-        
-        <div className="py-8">
-          <EntropySlider />
-        </div>
+      <div className="flex flex-col">
+        <EducationalGridModule 
+          moduleNum={1}
+          focus="Operational Ergonomics"
+          title="Balance & Action"
+          content="'Hustle' is manual energy fighting chaos. We build self-regulating loops. Spend two hours building an automation today to buy back hundreds of hours of peace tomorrow."
+          visualComponent={<LoopDiagram />}
+        />
 
-        <div className="bg-slate-50 rounded-[2rem] p-8 md:p-12 border border-slate-100">
-          <h3 className="text-xl font-bold text-slate-900 mb-4">Deep Dive: Thermodynamics of Business</h3>
-          <p className="text-slate-700 leading-relaxed font-serif-optional text-lg">
-            "Hustle" is manual energy fighting entropy. It is fundamentally unsustainable. Cybernetics is the construction of a self-regulating loop that buys back your inner peace. Once organized, the system resists chaos automatically, leaving your cognitive power strictly for creation.
-          </p>
-        </div>
-      </section>
+        <EducationalGridModule 
+          moduleNum={2}
+          focus="Workflows"
+          title="The API Mindset"
+          content="Demystifying APIs. An API is just a digital waiter taking an order from WhatsApp and bringing it to the kitchen (Google Sheets). No coding required."
+          visualComponent={<ApiDiagram />}
+        />
 
-      {/* CORE CONTENT: SECOND-ORDER THINKING */}
-      <section className="space-y-8 pt-8">
-        <div className="border-l-4 border-orange-500 pl-6 md:pl-8 py-2">
-           <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 uppercase tracking-tight">
-             Risks, Consequence & Collateral Effects
-           </h2>
-        </div>
+        <EducationalGridModule 
+          moduleNum={3}
+          focus="SME Automation"
+          title="Monetization Layer"
+          content="This is the efficiency layer. How a local fashion brand routes an Instagram DM to a lead capture form, directly into a Google Sheet, triggering an automated WhatsApp follow-up."
+          visualComponent={<SmeAutomationDiagram />}
+        />
 
-        <div className="py-8 max-w-2xl mx-auto w-full">
-          <ConsequenceMatrix />
-        </div>
+        <EducationalGridModule 
+          moduleNum={4}
+          focus="Business Systems"
+          title="Industry Workflows"
+          content="Real Estate (Lead -> Form -> Sheet -> Agent Alert). Agency Operations (Client Brief -> AI Analysis -> Task Assignment -> Reporting). All managed seamlessly from a mobile command center."
+          visualComponent={<SystemFactoryDiagram />}
+        />
+      </div>
 
-        <div className="bg-slate-50 rounded-[2rem] p-8 md:p-12 border border-slate-100">
-          <h3 className="text-xl font-bold text-slate-900 mb-4">Deep Dive: Technological Sovereignty</h3>
-          <p className="text-slate-700 leading-relaxed font-serif-optional text-lg">
-            You must move from "Rented Land" (social media algorithms) to "Owned Databases" (email lists, custom web apps). Every action must have a reaction that stores data for the founder. Relying entirely on external algorithms is a first-order trap leading to total loss of sovereignty.
-          </p>
-        </div>
-      </section>
-
-      {/* CORE CONTENT: THE SOVEREIGNTY STACK */}
-      <section className="space-y-8 pt-8">
-        <div className="border-l-4 border-slate-900 pl-6 md:pl-8 py-2">
-           <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 uppercase tracking-tight">
-             Foundational Frameworks: Ontological Design
-           </h2>
-        </div>
-
-        <div className="py-8">
-           <StackBuilder />
-        </div>
-
-        <div className="bg-slate-50 rounded-[2rem] p-8 md:p-12 border border-slate-100">
-          <h3 className="text-xl font-bold text-slate-900 mb-4">Deep Dive: Information Foraging</h3>
-          <p className="text-slate-700 leading-relaxed font-serif-optional text-lg">
-            Your workflow must be ruthless. If a process takes too many clicks, the user (and you, the founder) will abandon it. We build for the hunt: maximizing the yield of information and execution while minimizing the energy expended. Your stack is your greatest asset.
-          </p>
-        </div>
-      </section>
-
+      <div className="mt-12 text-center pb-20">
+         <p className="text-xs font-bold text-slate-400 tracking-widest uppercase mb-4">Execution Requirement</p>
+         <h3 className="text-xl font-bold text-slate-900 mb-6">Build your first trigger and return to base.</h3>
+         <Link to="/vault" className="inline-flex items-center justify-center bg-slate-900 text-white px-8 py-4 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-slate-800 transition-colors">
+            End Session
+         </Link>
+      </div>
     </motion.div>
   );
 }

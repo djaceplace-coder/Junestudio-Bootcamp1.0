@@ -13,9 +13,9 @@ const PORT = 3000;
 app.use(express.json());
 app.use(cookieParser());
 
-// Initialize Server-side Supabase client (using Service Role for secure bypass if needed, but here we can just use anon if not defined)
+// Initialize Server-side Supabase client (using Anon Key as requested)
 const supabaseUrl = process.env.VITE_SUPABASE_URL || "http://placeholder.supabase.co";
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.VITE_SUPABASE_ANON_KEY || "placeholder";
+const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || "placeholder";
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 // API 1: Server action to register user and generate token
@@ -34,44 +34,24 @@ app.post("/api/register", async (req, res) => {
         phone_number,
         social_handle,
         access_token,
+        payment_status: true, // Auto-approve since webhook is removed
+        is_admin: false,
       }
     ])
     .select()
     .single();
 
   if (error) {
+    if (error.code === '23505') { // Unique violation
+      return res.status(400).json({ error: "Email already registered. Need help? Contact support." });
+    }
     return res.status(400).json({ error: error.message });
   }
 
   res.json({ success: true, user: data });
 });
 
-// API 2: Webhook ping after upload
-app.post("/api/webhook/notify", async (req, res) => {
-  const { full_name, phone_number, receipt_url } = req.body;
-  
-  const webhookUrl = process.env.WEBHOOK_URL;
-  if (!webhookUrl) {
-    console.warn("WEBHOOK_URL not configured. Skipping external ping.");
-    return res.json({ success: true, warning: "Webhook URL not set locally" });
-  }
-
-  try {
-    const response = await fetch(webhookUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ full_name, phone_number, receipt_url }),
-    });
-
-    if (!response.ok) {
-        return res.status(500).json({ error: "Failed to ping external webhook" });
-    }
-
-    res.json({ success: true });
-  } catch (err) {
-    res.status(500).json({ error: "External webhook failure" });
-  }
-});
+// Removed webhook API
 
 // API 3: The Gatekeeper (Initiation)
 app.post("/api/initiation/login", async (req, res) => {

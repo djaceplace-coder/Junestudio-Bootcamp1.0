@@ -193,7 +193,23 @@ export default function Landing() {
                 <InputBox label="Social Handle (Optional)" name="social_handle" type="text" value={formData.social_handle} onChange={handleChange} />
               </div>
 
-              {error && <div className="text-red-500 text-sm font-medium bg-red-50 p-3 rounded-xl">{error}</div>}
+              {error && (
+                <div className="flex flex-col gap-2">
+                  <div className="text-red-600 text-sm font-bold bg-red-50 border border-red-100 p-4 rounded-xl text-center">
+                    {error}
+                  </div>
+                  {error.includes("already registered") && (
+                    <a 
+                      href="https://wa.me/2348000000000?text=Hello%20June%20Studio!%20My%20email%20is%20registered%20but%20I%20need%20help." 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      className="bg-slate-900 text-white text-center py-3 rounded-xl font-bold text-sm tracking-widest uppercase hover:bg-slate-800 transition-colors"
+                    >
+                      Contact Support (WhatsApp)
+                    </a>
+                  )}
+                </div>
+              )}
 
               <div className="flex flex-col gap-4 mt-4">
                 <button 

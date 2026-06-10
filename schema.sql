@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS bootcamp_initiates (
     phone_number TEXT NOT NULL,
     social_handle TEXT,
     receipt_url TEXT,
-    payment_status BOOLEAN DEFAULT false,
+    payment_status BOOLEAN DEFAULT true,
     access_token TEXT UNIQUE NOT NULL,
     is_admin BOOLEAN DEFAULT FALSE
 );
