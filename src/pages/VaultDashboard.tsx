@@ -79,6 +79,13 @@ export default function VaultDashboard() {
       path: "/vault/day-3",
       unlocked: user?.is_admin || now >= day3Unlock,
       target: day3Unlock
+    },
+    {
+      id: 4,
+      title: "The Master Resources Vault",
+      path: "/vault/resources",
+      unlocked: user?.is_admin || now >= day3Unlock,
+      target: day3Unlock
     }
   ];
 

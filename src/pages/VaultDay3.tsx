@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, Link, useOutletContext } from "react-router-dom";
 import { ArrowLeft, Brain, Cpu, Database, Share2, Target, TrendingUp, HandCoins, MonitorPlay, Zap } from "lucide-react";
 import { motion } from "motion/react";
-import { ResourcesVault } from "../components/VaultComponents";
 
 const StackComparisonGrid = () => (
   <div className="w-full bg-slate-50 p-6 md:p-10 rounded-3xl border border-slate-200 overflow-hidden shadow-sm">
@@ -307,10 +306,6 @@ export default function VaultDay3() {
 
         </div>
 
-        {/* RESOURCES VAULT */}
-        <div className="mt-8">
-           <ResourcesVault />
-        </div>
       </motion.div>
 
 

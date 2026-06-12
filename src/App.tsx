@@ -12,6 +12,7 @@ import VaultDashboard from "./pages/VaultDashboard.tsx";
 import VaultDay1 from "./pages/VaultDay1.tsx";
 import VaultDay2 from "./pages/VaultDay2.tsx";
 import VaultDay3 from "./pages/VaultDay3.tsx";
+import VaultResources from "./pages/VaultResources.tsx";
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
             <Route path="day-1" element={<VaultDay1 />} />
             <Route path="day-2" element={<VaultDay2 />} />
             <Route path="day-3" element={<VaultDay3 />} />
+            <Route path="resources" element={<VaultResources />} />
           </Route>
         </Routes>
       </BrowserRouter>
